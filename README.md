@@ -1,5 +1,7 @@
 # recursive-proxy-mock
 
+[![npm](https://img.shields.io/npm/v/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![npm](https://img.shields.io/npm/dm/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![NPM](https://img.shields.io/npm/l/recursive-proxy-mock)](https://github.com/CreativeTechGuy/recursive-proxy-mock/blob/main/LICENSE) [![npm type definitions](https://img.shields.io/npm/types/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 > Create a proxy which can mock any object, function, class, etc. with infinite depth and combinations.
 
 ## Table of Contents

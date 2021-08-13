@@ -1,6 +1,6 @@
 {
     "name": "recursive-proxy-mock",
-    "version": "0.9.0",
+    "version": "1.0.0-semantic-release",
     "description": "Create a proxy which can mock any object, function, class, etc. with infinite depth and combinations.",
     "keywords": [
         "proxy",
@@ -52,6 +52,8 @@
         "@babel/eslint-parser": "^7.15.0",
         "@babel/preset-env": "^7.15.0",
         "@babel/preset-typescript": "^7.15.0",
+        "@commitlint/cli": "^13.1.0",
+        "@commitlint/config-conventional": "^13.1.0",
         "@rollup/plugin-typescript": "^8.2.5",
         "@types/jest": "^26.0.24",
         "@types/jsdom": "^16.2.13",
