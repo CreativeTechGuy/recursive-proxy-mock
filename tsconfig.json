@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "noEmit": true,
+        "declaration": true,
+        "outDir": "",
+        "declarationDir": "",
+        "strict": true,
+        "target": "ESNext",
+        "module": "ESNext",
+        "lib": ["ESNext", "DOM"],
+        "allowJs": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "test/*": ["test/*"],
+            "~/*": ["src/*"]
+        },
+        "baseUrl": "."
+    },
+    "include": ["src", "test"]
+}

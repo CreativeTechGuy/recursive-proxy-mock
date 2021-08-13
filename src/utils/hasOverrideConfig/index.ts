@@ -1,0 +1,1 @@
+export { hasOverrideConfig } from "./hasOverrideConfig";

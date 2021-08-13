@@ -1,0 +1,1 @@
+export { doPathsMatch } from "./doPathsMatch";

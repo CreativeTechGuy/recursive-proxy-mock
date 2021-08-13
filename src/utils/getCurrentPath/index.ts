@@ -1,0 +1,1 @@
+export { getCurrentPath } from "./getCurrentPath";

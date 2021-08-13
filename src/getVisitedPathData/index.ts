@@ -1,0 +1,1 @@
+export { getVisitedPathData } from "./getVisitedPathData";
