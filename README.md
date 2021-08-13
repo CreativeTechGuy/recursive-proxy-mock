@@ -29,9 +29,9 @@
 
 ## About
 
-Have you ever needed to mock something that has hundreds or thousands of nested properties and functions? You don't need all of those to be implemented, just exist so the code doesn't crash. This is the solution.
+Have you ever wanted to mock something that has lots of nested properties and functions? You don't need all of those to be implemented. You just want them to exist so the code doesn't crash. This is the solution.
 
-Recursive Proxy Mock is a [JavaScript Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that can handle literally anything. This is best explained with examples, read on!
+Recursive Proxy Mock is a [JavaScript Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that can handle literally anything. This is best explained with examples. Read on!
 
 ## Examples
 
@@ -136,10 +136,10 @@ if (hasPathBeenCalledWith(mock, ["a", "b", "c", ProxySymbol.APPLY], ["hi", true,
 Main function to create the recursive proxy mock object.
 
 -   `overrides` - _\[optional]_ - an array of objects that contain `path` and `value`.
-    -   `path` - see the [ProxyPath section](#ProxyPath) for more details.
+    -   `path` - see the [ProxyPath section](#proxypath) for more details.
     -   `value` - the value to return instead of another recursive proxy. This needs to match the type of the path. So if your path ends in `ProxySymbol.APPLY` this value must be a function which will be called with whatever arguments the proxy was called with.
 
-See [Example Above](#Override-the-default-proxy-behavior-with-custom-values) for more details.
+See [Example Above](#override-the-default-proxy-behavior-with-custom-values) for more details.
 
 #### TypeScript Support
 
@@ -174,7 +174,7 @@ These symbols are used to construct paths for the following functions:
 Function to check if a certain path was ever visited. Useful in conjunction with test assertions.
 
 -   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
--   `path` - see the [ProxyPath section](#ProxyPath) for more details.
+-   `path` - see the [ProxyPath section](#proxypath) for more details.
 -   Returns: `true` if the specified path has ever been visited on the proxy object, `false` if not.
 
 ### `hasPathBeenCalledWith(proxy, path, args) => boolean`
@@ -182,7 +182,7 @@ Function to check if a certain path was ever visited. Useful in conjunction with
 Function to check if a certain path was ever called (as a function or class constructor). Useful in conjunction with test assertions. Very similar to `hasPathBeenVisited` but specific for method calls and designed to be easier to use than parsing `getVisitedPathData` yourself.
 
 -   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
--   `path` - see the [ProxyPath section](#ProxyPath) for more details. The path must end in `ProxySymbol.APPLY` or `ProxySymbol.CONSTRUCT`.
+-   `path` - see the [ProxyPath section](#proxypath) for more details. The path must end in `ProxySymbol.APPLY` or `ProxySymbol.CONSTRUCT`.
 -   `args` - an array of arguments that should have been passed to the specified path
 -   Returns: `true` if the specified path has ever been called on the proxy object, `false` if not.
 
@@ -191,7 +191,7 @@ Function to check if a certain path was ever called (as a function or class cons
 Function to get details about every time a path was visited. Useful in conjunction with test assertions to get the number of visits, arguments passed, etc.
 
 -   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
--   `path` - see the [ProxyPath section](#ProxyPath) for more details.
+-   `path` - see the [ProxyPath section](#proxypath) for more details.
 -   Returns: Array of `ProxyData` objects, one for each time the path was visited on the proxy object. `null` if it was never visited.
 
 #### ProxyData
@@ -213,16 +213,16 @@ A `ProxyData` object contains any relevant details about the operation. For exam
 
 ### `listAllProxyOperations(proxy) => ProxyData[]`
 
-A debug function which lists the raw "proxy stack" of every operation that was performed on the mock. This is an array of [ProxyData](#ProxyData) objects which have metadata that is used to power all of the other functions. For example, every object has a `parent` property which contains a number. This number will be the same as some other object's `self` property. Using those two values you can construct a tree containing every path that was accessed on the object.
+A debug function which lists the raw "proxy stack" of every operation that was performed on the mock. This is an array of [ProxyData](#proxydata) objects which have metadata that is used to power all of the other functions. For example, every object has a `parent` property which contains a number. This number will be the same as some other object's `self` property. Using those two values you can construct a tree containing every path that was accessed on the object.
 
 This is exposed primarily for debugging or curiosity and shouldn't be relied on. If you find yourself needing to use the data here, [create an Issue](https://github.com/CreativeTechGuy/recursive-proxy-mock/issues/new/choose) explaining your use-case and we may add a function to support that directly.
 
 -   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
--   Returns: Array of [ProxyData](#ProxyData) objects for every operation that was performed on the mock.
+-   Returns: Array of [ProxyData](#proxydata) objects for every operation that was performed on the mock.
 
 ### ProxyPath
 
-Whenever a method accepts a `path` it is an array of properties and symbols to define a request path on the mock object. (See [ProxySymbol](#ProxySymbol) for more details.)
+Whenever a method accepts a `path` it is an array of properties and symbols to define a request path on the mock object. (See [ProxySymbol](#proxysymbol) for more details.)
 
 -   Examples:
     -   `mock.test.abc` => `["test", "abc"]`
