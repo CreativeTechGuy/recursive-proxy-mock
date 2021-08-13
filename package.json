@@ -32,7 +32,7 @@
         "node": ">=12"
     },
     "scripts": {
-        "release": "npm run lint && npm run format:check && npm run spellcheck && npm run build",
+        "release": "npm run lint && npm run format:check && npm run spellcheck && npm run test && npm run build",
         "build": "rm -rf dist && rollup -c",
         "lint": "eslint . --max-warnings 0",
         "lint:fix": "npm run lint -- --fix",
