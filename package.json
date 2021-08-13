@@ -33,7 +33,7 @@
     },
     "scripts": {
         "release": "npm run lint && npm run format:check && npm run spellcheck && npm run test && npm run build",
-        "build": "rm -rf dist && rollup -c",
+        "build": "rimraf dist && rollup -c",
         "lint": "eslint . --max-warnings 0",
         "lint:fix": "npm run lint -- --fix",
         "test": "jest",
@@ -43,7 +43,7 @@
         "spellcheck": "cspell \"**/*.{js,ts,json,md}\"",
         "list-outdated-dependencies": "npm-check-updates --format repo",
         "update-dependencies": "npm-check-updates -u && npm install && npm run build",
-        "clean": "rm -rf node_modules coverage dist",
+        "clean": "rimraf coverage dist node_modules || echo Repo cleaned",
         "readme-toc": "remark README.md --output --use \"toc=tight:true\" && prettier README.md --write",
         "prepare": "husky install"
     },
