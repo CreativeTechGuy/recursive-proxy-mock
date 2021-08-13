@@ -29,7 +29,7 @@
         "url": "https://github.com/CreativeTechGuy/recursive-proxy-mock.git"
     },
     "engines": {
-        "node": ">=12"
+        "node": ">=10"
     },
     "scripts": {
         "release": "npm run lint && npm run format:check && npm run spellcheck && npm run test && npm run build",
@@ -72,6 +72,7 @@
         "prettier": "^2.3.2",
         "remark-cli": "^10.0.0",
         "remark-toc": "^8.0.0",
+        "rimraf": "^3.0.2",
         "rollup": "^2.56.1",
         "semantic-release": "^17.4.4",
         "ttypescript": "^1.5.12",
