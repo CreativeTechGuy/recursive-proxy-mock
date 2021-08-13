@@ -7,6 +7,7 @@
 ## Table of Contents
 
 -   [About](#about)
+-   [Installation & Importing](#installation--importing)
 -   [Examples](#examples)
     -   [Use the mock to do literally anything](#use-the-mock-to-do-literally-anything)
     -   [Override the default proxy behavior with custom values](#override-the-default-proxy-behavior-with-custom-values)
@@ -32,6 +33,20 @@
 Have you ever wanted to mock something that has lots of nested properties and functions? You don't need all of those to be implemented. You just want them to exist so the code doesn't crash. This is the solution.
 
 Recursive Proxy Mock is a [JavaScript Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that can handle literally anything. This is best explained with examples. Read on!
+
+## Installation & Importing
+
+```sh
+npm install --save-dev recursive-proxy-mock
+```
+
+```js
+import { recursiveProxyMock } from "recursive-proxy-mock";
+```
+
+```js
+const { recursiveProxyMock } = require("recursive-proxy-mock");
+```
 
 ## Examples
 

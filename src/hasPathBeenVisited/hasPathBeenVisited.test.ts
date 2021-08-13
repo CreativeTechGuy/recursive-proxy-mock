@@ -24,4 +24,12 @@ describe("hasPathBeenVisited", () => {
         proxy.a;
         expect(hasPathBeenVisited(proxy, ["b", "c"])).toStrictEqual(false);
     });
+
+    test("returns false when passed a sub-mock object", () => {
+        const proxy = recursiveProxyMock();
+        const b = proxy.a.b;
+        b.c.d;
+        expect(hasPathBeenVisited(b, ["c", "d"])).toStrictEqual(false);
+        expect(hasPathBeenVisited(proxy, ["a", "b", "c", "d"])).toStrictEqual(true);
+    });
 });
