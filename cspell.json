@@ -1,6 +1,6 @@
 {
     "version": "0.1",
-    "words": ["commitlint", "corejs", "eqeqeq", "iife", "lcov", "ttypescript", "webgl"],
+    "words": ["bundlephobia", "commitlint", "corejs", "eqeqeq", "iife", "lcov", "ttypescript", "webgl"],
     "ignoreRegExpList": ["\\(#.*\\)"],
     "ignorePaths": ["/coverage", "/dist", "package-lock.json", "package.json"]
 }

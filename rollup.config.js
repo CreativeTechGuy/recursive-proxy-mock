@@ -20,30 +20,28 @@ const typescriptPluginConfig = {
 
 export default [
     {
-        input: "src/index.ts",
+        input: "./src/index.ts",
         output: {
             file: "./dist/cjs/index.js",
             format: "cjs",
             sourcemap: true,
         },
-        external: [/@babel\/runtime/],
         plugins: [
             typescript(typescriptPluginConfig),
-            babel({ babelHelpers: "runtime", extensions: [".js", ".ts"], exclude: /node_modules/ }),
+            babel({ babelHelpers: "bundled", extensions: [".js", ".ts"] }),
             nodeResolve(),
             commonjs(),
             bundleSize(),
         ],
     },
     {
-        input: "src/index.ts",
+        input: "./src/index.ts",
         output: {
             dir: "./dist/esm",
             format: "esm",
             sourcemap: true,
             preserveModules: true,
         },
-        external: [/@babel\/runtime/],
         plugins: [
             typescript({
                 ...typescriptPluginConfig,

@@ -1,6 +1,6 @@
 # recursive-proxy-mock
 
-[![npm](https://badgen.net/npm/v/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![license MIT](https://badgen.net/npm/license/recursive-proxy-mock)](https://github.com/CreativeTechGuy/recursive-proxy-mock/blob/main/LICENSE) [![npm type definitions](https://badgen.net/npm/types/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![npm](https://badgen.net/npm/dm/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![npm](https://badgen.net/npm/v/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![license MIT](https://badgen.net/npm/license/recursive-proxy-mock)](https://github.com/CreativeTechGuy/recursive-proxy-mock/blob/main/LICENSE) [![npm type definitions](https://badgen.net/npm/types/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![bundlephobia](https://badgen.net/bundlephobia/minzip/recursive-proxy-mock)](https://bundlephobia.com/package/recursive-proxy-mock) [![npm](https://badgen.net/npm/dm/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 > Create a proxy which can mock any object, function, class, etc. with infinite depth and combinations.
 
@@ -20,8 +20,8 @@
     -   [`hasPathBeenVisited(proxy, path) => boolean`](#haspathbeenvisitedproxy-path--boolean)
     -   [`hasPathBeenCalledWith(proxy, path, args) => boolean`](#haspathbeencalledwithproxy-path-args--boolean)
     -   [`getVisitedPathData(proxy, path) => ProxyData[] | null`](#getvisitedpathdataproxy-path--proxydata--null)
-    -   [`replayMock(proxy, target)`](#replaymockproxy-target)
         -   [ProxyData](#proxydata)
+    -   [`replayProxy(proxy, target)`](#replayproxyproxy-target)
     -   [`listAllProxyOperations(proxy) => ProxyData[]`](#listallproxyoperationsproxy--proxydata)
     -   [ProxyPath](#proxypath)
     -   [Caveats](#caveats)
@@ -226,15 +226,6 @@ Function to get details about every time a path was visited. Useful in conjuncti
 
 -   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
 -   `path` - see the [ProxyPath section](#proxypath) for more details.
-
-### `replayMock(proxy, target)`
-
-Replay every operation performed on a proxy mock object onto a target object. This can effectively let you time travel to queue up any actions and replay them as many times as you would like. Every property accessor, every function call, etc will be replayed onto the target.
-
--   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
-
--   `target` - any object/function/class etc which will be operated on in the same way that the `proxy` object was.
-
 -   Returns: Array of `ProxyData` objects, one for each time the path was visited on the proxy object. `null` if it was never visited.
 
 #### ProxyData
@@ -253,6 +244,13 @@ A `ProxyData` object contains any relevant details about the operation. For exam
     -   `descriptor` - the descriptor object that was passed to the `Object.defineProperty` call. [Descriptor documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#description).
 -   All other handlers:
     -   No useful additional information is available
+
+### `replayProxy(proxy, target)`
+
+Replay every operation performed on a proxy mock object onto a target object. This can effectively let you time travel to queue up any actions and replay them as many times as you would like. Every property accessor, every function call, etc will be replayed onto the target.
+
+-   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
+-   `target` - any object/function/class etc which will be operated on in the same way that the `proxy` object was.
 
 ### `listAllProxyOperations(proxy) => ProxyData[]`
 
@@ -332,7 +330,7 @@ expect(hasPathBeenVisited(res, ["redirect", ProxySymbol.APPLY])).toStrictEqual(t
 
 ## Browser/Node Support
 
-Out of the box we support all browsers that support the [Proxy object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy#browser_compatibility) and any current LTS version of Node. Unfortunately Proxy cannot be polyfilled for older versions so this is the best browser support we can do.
+Out of the box we support all modern browsers and any currently maintained version of Node. Unfortunately Proxy cannot be polyfilled, so supporting a browser like Internet Explorer is completely out of the question.
 
 ## Performance & Size
 
