@@ -1,23 +1,8 @@
-const packageJSON = require("./package.json");
-
-const transformRuntimeVersion = packageJSON.devDependencies["@babel/plugin-transform-runtime"];
-
 module.exports = (api) => {
     const isTest = api.env("test");
     const config = {
-        plugins: [
-            [
-                "@babel/transform-runtime",
-                {
-                    corejs: 3,
-                    version: transformRuntimeVersion,
-                },
-            ],
-        ],
-        presets: [],
-    };
-    if (isTest) {
-        config.presets.push(
+        plugins: [],
+        presets: [
             [
                 "@babel/env",
                 {
@@ -25,23 +10,23 @@ module.exports = (api) => {
                     useBuiltIns: "usage",
                     corejs: 3,
                     shippedProposals: true,
+                    ...(isTest
+                        ? {
+                              targets: {
+                                  node: "current",
+                              },
+                          }
+                        : {}),
                 },
             ],
-            [
-                "@babel/typescript",
-                {
-                    allowDeclareFields: true,
-                    onlyRemoveTypeImports: true,
-                },
-            ]
-        );
-    } else {
+        ],
+    };
+    if (isTest) {
         config.presets.push([
-            "@babel/env",
+            "@babel/typescript",
             {
-                bugfixes: true,
-                useBuiltIns: false,
-                shippedProposals: true,
+                allowDeclareFields: true,
+                onlyRemoveTypeImports: true,
             },
         ]);
     }

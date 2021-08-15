@@ -332,7 +332,7 @@ expect(hasPathBeenVisited(res, ["redirect", ProxySymbol.APPLY])).toStrictEqual(t
 
 ## Browser/Node Support
 
-Out of the box we support all browsers that support the [Proxy object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy#browser_compatibility) and any current LTS version of Node. Unfortunately Proxy cannot be polyfilled for older versions so this is the best browser support we can do.
+Out of the box we support all modern browsers and any currently maintained version of Node. Unfortunately Proxy cannot be polyfilled, so supporting a browser like Internet Explorer is completely out of the question.
 
 ## Performance & Size
 
