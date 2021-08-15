@@ -27,6 +27,8 @@
     -   [Mock HTML5 Canvas in JSDOM](#mock-html5-canvas-in-jsdom)
     -   [Mock an entire library](#mock-an-entire-library)
     -   [Mock complex objects](#mock-complex-objects)
+-   [Browser/Node Support](#browsernode-support)
+-   [Performance & Size](#performance--size)
 
 ## About
 
@@ -301,3 +303,11 @@ logoutHandler(req, res);
 // Assert that res.redirect() has been called
 expect(hasPathBeenVisited(res, ["redirect", ProxySymbol.APPLY])).toStrictEqual(true);
 ```
+
+## Browser/Node Support
+
+Out of the box we support all browsers that support the [Proxy object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy#browser_compatibility) and any current LTS version of Node. Unfortunately Proxy cannot be polyfilled for older versions so this is the best browser support we can do.
+
+## Performance & Size
+
+It's important to note that Proxies are far slower than most alternatives. We wouldn't recommend to use this for performance-critical code. The library is heavily tree-shakable so the average bundle size will be just a few KBs.

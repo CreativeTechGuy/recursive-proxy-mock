@@ -22,8 +22,10 @@
     "files": [
         "/dist"
     ],
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/esm/index.d.ts",
+    "sideEffects": false,
     "repository": {
         "type": "git",
         "url": "https://github.com/CreativeTechGuy/recursive-proxy-mock.git"
@@ -42,7 +44,7 @@
         "format:check": "prettier . --check",
         "spellcheck": "cspell \"**/*.{js,ts,json,md}\"",
         "list-outdated-dependencies": "npm-check-updates --format repo",
-        "update-dependencies": "npm-check-updates -u && npm install && npm run build",
+        "update-dependencies": "npm-check-updates -u && npm install && npm run release",
         "clean": "rimraf coverage dist node_modules || echo Repo cleaned",
         "readme-toc": "remark README.md --output --use \"toc=tight:true\" && prettier README.md --write",
         "prepare": "husky install"
@@ -50,10 +52,14 @@
     "devDependencies": {
         "@babel/core": "^7.15.0",
         "@babel/eslint-parser": "^7.15.0",
+        "@babel/plugin-transform-runtime": "^7.15.0",
         "@babel/preset-env": "^7.15.0",
         "@babel/preset-typescript": "^7.15.0",
         "@commitlint/cli": "^13.1.0",
         "@commitlint/config-conventional": "^13.1.0",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.4",
         "@rollup/plugin-typescript": "^8.2.5",
         "@types/jest": "^26.0.24",
         "@types/jsdom": "^16.2.13",
@@ -74,9 +80,13 @@
         "remark-toc": "^8.0.0",
         "rimraf": "^3.0.2",
         "rollup": "^2.56.1",
+        "rollup-plugin-bundle-size": "^1.0.3",
         "semantic-release": "^17.4.4",
         "ttypescript": "^1.5.12",
         "typescript": "^4.4.0-beta",
         "typescript-transform-paths": "^3.3.0"
+    },
+    "dependencies": {
+        "@babel/runtime-corejs3": "^7.15.3"
     }
 }
