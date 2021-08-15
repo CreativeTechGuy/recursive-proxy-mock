@@ -61,8 +61,11 @@ export function replayProxy(proxy: unknown, target: unknown): void {
             Object.preventExtensions(parent);
         } else if (isSet(stackItem)) {
             parent[stackItem.prop] = stackItem.value;
-        } /* istanbul ignore else */ else if (isSetPrototypeOf(stackItem)) {
-            Object.setPrototypeOf(parent, stackItem.prototype);
+        } else {
+            /* istanbul ignore else */
+            if (isSetPrototypeOf(stackItem)) {
+                Object.setPrototypeOf(parent, stackItem.prototype);
+            }
         }
         if ("self" in stackItem) {
             targetStateMap.set(stackItem.self, value);
