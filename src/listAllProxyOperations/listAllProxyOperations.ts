@@ -1,5 +1,6 @@
 import { isRecursiveProxyMock } from "~/isRecursiveProxyMock";
 import type { ProxyData } from "~/proxyTypes";
+import { developmentLog } from "~/utils/developmentLog";
 import { getProxyStack } from "~/utils/getProxyStack";
 
 /**
@@ -8,7 +9,7 @@ import { getProxyStack } from "~/utils/getProxyStack";
  */
 export function listAllProxyOperations(proxy: unknown): ProxyData[] {
     if (!isRecursiveProxyMock(proxy)) {
-        console.warn("Must pass an object created with `recursiveProxyMock()`. Instead received:", proxy);
+        developmentLog("Must pass an object created with `recursiveProxyMock()`. Instead received:", proxy);
         return [];
     }
     return getProxyStack(proxy);

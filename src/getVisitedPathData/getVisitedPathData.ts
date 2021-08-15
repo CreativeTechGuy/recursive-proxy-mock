@@ -1,5 +1,6 @@
 import { isRecursiveProxyMock } from "~/isRecursiveProxyMock";
 import type { ProxyData, ProxyPath, ProxyStackItem } from "~/proxyTypes";
+import { developmentLog } from "~/utils/developmentLog";
 import { doPathsMatch } from "~/utils/doPathsMatch";
 import { getCurrentPath } from "~/utils/getCurrentPath";
 import { getProxyStack } from "~/utils/getProxyStack";
@@ -11,7 +12,7 @@ import { getProxyStack } from "~/utils/getProxyStack";
  */
 export function getVisitedPathData(proxy: unknown, path: ProxyPath): ProxyData[] | null {
     if (!isRecursiveProxyMock(proxy)) {
-        console.warn("Must pass an object created with `recursiveProxyMock()`. Instead received:", proxy);
+        developmentLog("Must pass an object created with `recursiveProxyMock()`. Instead received:", proxy);
         return null;
     }
     const proxyStack = getProxyStack(proxy);
