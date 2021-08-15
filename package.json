@@ -6,12 +6,15 @@
         "proxy",
         "es6 proxy",
         "recursive proxy",
+        "mock",
         "mock proxy",
         "mock anything",
         "jest mock",
         "proxy mock",
         "test mock",
-        "unit test"
+        "unit test",
+        "replay",
+        "queue actions"
     ],
     "author": {
         "name": "Jason O'Neill",
