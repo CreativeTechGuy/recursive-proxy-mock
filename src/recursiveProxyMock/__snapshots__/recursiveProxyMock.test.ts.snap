@@ -342,18 +342,18 @@ Array [
     "name": "get",
     "parent": 0,
     "pathKey": Array [
-      "a",
+      "b",
     ],
-    "prop": "a",
+    "prop": "b",
     "self": 1,
   },
   Object {
     "name": "get",
     "parent": 1,
     "pathKey": Array [
-      "b",
+      "c",
     ],
-    "prop": "b",
+    "prop": "c",
     "self": 2,
   },
   Object {
@@ -363,32 +363,6 @@ Array [
       Symbol(getPrototypeOf),
     ],
     "self": 3,
-  },
-  Object {
-    "name": "get",
-    "parent": 0,
-    "pathKey": Array [
-      "b",
-    ],
-    "prop": "b",
-    "self": 4,
-  },
-  Object {
-    "name": "get",
-    "parent": 4,
-    "pathKey": Array [
-      "c",
-    ],
-    "prop": "c",
-    "self": 5,
-  },
-  Object {
-    "name": "getPrototypeOf",
-    "parent": 5,
-    "pathKey": Array [
-      Symbol(getPrototypeOf),
-    ],
-    "self": 6,
   },
 ]
 `;

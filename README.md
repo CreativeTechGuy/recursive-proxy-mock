@@ -250,7 +250,7 @@ Whenever a method accepts a `path` it is an array of properties and symbols to d
 
 ### Caveats
 
--   You cannot override `ProxySymbol.IS_EXTENSIBLE` or `ProxySymbol.PREVENT_EXTENSIONS`. Their values are fixed as they must always match the proxy target.
+-   You cannot override `ProxySymbol.IS_EXTENSIBLE`, `ProxySymbol.PREVENT_EXTENSIONS`, or `ProxySymbol.GET_PROTOTYPE_OF`. Their values are fixed as they must always match the proxy target.
 
 ## More examples
 

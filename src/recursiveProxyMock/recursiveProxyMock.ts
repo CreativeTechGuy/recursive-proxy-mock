@@ -137,10 +137,6 @@ function recursiveProxyRecurse(overrides: ProxyOverrideConfig[], stack: ProxySta
                 parent: parentId,
                 self: next,
             });
-            const override = findOverrideConfig(overrides, [...currentPath, ...pathKey]) as object | null | undefined;
-            if (typeof override !== "undefined") {
-                return override;
-            }
             return null;
         },
         has: (target, prop): boolean => {

@@ -202,17 +202,7 @@ describe("recursiveProxyMock", () => {
     });
 
     test("proxy trap: getPrototypeOf", () => {
-        const mock = recursiveProxyMock([
-            {
-                path: ["a", "b", ProxySymbol.GET_PROTOTYPE_OF],
-                value: {
-                    protoValue: 7,
-                },
-            },
-        ]);
-        expect(Object.getPrototypeOf(mock.a.b)).toStrictEqual({
-            protoValue: 7,
-        });
+        const mock = recursiveProxyMock();
         expect(Object.getPrototypeOf(mock.b.c)).toBeNull();
         expect(listAllProxyOperations(mock)).toMatchSnapshot();
     });
