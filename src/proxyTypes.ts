@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- used in JSDoc
-import type { ProxySymbol } from "./ProxySymbol";
+import type { ProxySymbol } from "~/ProxySymbol";
 
-type ApplyProxyItem = {
+export type ApplyProxyItem = {
     name: "apply";
     pathKey: ProxyPath;
     args: unknown[];
@@ -9,7 +9,7 @@ type ApplyProxyItem = {
     self: number;
 };
 
-type ConstructProxyItem = {
+export type ConstructProxyItem = {
     name: "construct";
     pathKey: ProxyPath;
     args: unknown[];
@@ -17,7 +17,7 @@ type ConstructProxyItem = {
     self: number;
 };
 
-type DefinePropertyProxyItem = {
+export type DefinePropertyProxyItem = {
     name: "defineProperty";
     pathKey: ProxyPath;
     prop: string | symbol;
@@ -25,14 +25,14 @@ type DefinePropertyProxyItem = {
     parent: number;
 };
 
-type DeletePropertyProxyItem = {
+export type DeletePropertyProxyItem = {
     name: "deleteProperty";
     pathKey: ProxyPath;
     prop: string | symbol;
     parent: number;
 };
 
-type GetProxyItem = {
+export type GetProxyItem = {
     name: "get";
     pathKey: ProxyPath;
     prop: string | symbol;
@@ -40,7 +40,7 @@ type GetProxyItem = {
     self: number;
 };
 
-type GetOwnPropertyDescriptorProxyItem = {
+export type GetOwnPropertyDescriptorProxyItem = {
     name: "getOwnPropertyDescriptor";
     pathKey: ProxyPath;
     prop: string | symbol;
@@ -48,39 +48,39 @@ type GetOwnPropertyDescriptorProxyItem = {
     self: number;
 };
 
-type GetPrototypeOfProxyItem = {
+export type GetPrototypeOfProxyItem = {
     name: "getPrototypeOf";
     pathKey: ProxyPath;
     parent: number;
     self: number;
 };
 
-type HasProxyItem = {
+export type HasProxyItem = {
     name: "has";
     pathKey: ProxyPath;
     prop: string | symbol;
     parent: number;
 };
 
-type IsExtensibleProxyItem = {
+export type IsExtensibleProxyItem = {
     name: "isExtensible";
     pathKey: ProxyPath;
     parent: number;
 };
 
-type OwnKeysProxyItem = {
+export type OwnKeysProxyItem = {
     name: "ownKeys";
     pathKey: ProxyPath;
     parent: number;
 };
 
-type PreventExtensionsProxyItem = {
+export type PreventExtensionsProxyItem = {
     name: "preventExtensions";
     pathKey: ProxyPath;
     parent: number;
 };
 
-type SetProxyItem = {
+export type SetProxyItem = {
     name: "set";
     pathKey: ProxyPath;
     prop: string | symbol;
@@ -88,7 +88,7 @@ type SetProxyItem = {
     parent: number;
 };
 
-type SetPrototypeOfProxyItem = {
+export type SetPrototypeOfProxyItem = {
     name: "setPrototypeOf";
     pathKey: ProxyPath;
     // eslint-disable-next-line @typescript-eslint/ban-types

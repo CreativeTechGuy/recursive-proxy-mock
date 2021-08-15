@@ -12,6 +12,7 @@
     -   [Use the mock to do literally anything](#use-the-mock-to-do-literally-anything)
     -   [Override the default proxy behavior with custom values](#override-the-default-proxy-behavior-with-custom-values)
     -   [Inspect what was done to the mock](#inspect-what-was-done-to-the-mock)
+    -   [Store and replay all operations](#store-and-replay-all-operations)
 -   [API Documentation](#api-documentation)
     -   [`recursiveProxyMock([overrides]) => Proxy`](#recursiveproxymockoverrides--proxy)
         -   [TypeScript Support](#typescript-support)
@@ -19,6 +20,7 @@
     -   [`hasPathBeenVisited(proxy, path) => boolean`](#haspathbeenvisitedproxy-path--boolean)
     -   [`hasPathBeenCalledWith(proxy, path, args) => boolean`](#haspathbeencalledwithproxy-path-args--boolean)
     -   [`getVisitedPathData(proxy, path) => ProxyData[] | null`](#getvisitedpathdataproxy-path--proxydata--null)
+    -   [`replayMock(proxy, target)`](#replaymockproxy-target)
         -   [ProxyData](#proxydata)
     -   [`listAllProxyOperations(proxy) => ProxyData[]`](#listallproxyoperationsproxy--proxydata)
     -   [ProxyPath](#proxypath)
@@ -146,6 +148,21 @@ if (hasPathBeenCalledWith(mock, ["a", "b", "c", ProxySymbol.APPLY], ["hi", true,
 }
 ```
 
+### Store and replay all operations
+
+```ts
+import { recursiveProxyMock, replayProxy } from "recursive-proxy-mock";
+
+const mock = recursiveProxyMock();
+
+// Queue up operations on a mock
+mock.metrics.pageLoad(Date.now());
+mock.users.addUser("name");
+
+// Sometime later once the module is loaded
+replayProxy(mock, apiModule);
+```
+
 ## API Documentation
 
 ### `recursiveProxyMock([overrides]) => Proxy`
@@ -209,6 +226,15 @@ Function to get details about every time a path was visited. Useful in conjuncti
 
 -   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
 -   `path` - see the [ProxyPath section](#proxypath) for more details.
+
+### `replayMock(proxy, target)`
+
+Replay every operation performed on a proxy mock object onto a target object. This can effectively let you time travel to queue up any actions and replay them as many times as you would like. Every property accessor, every function call, etc will be replayed onto the target.
+
+-   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
+
+-   `target` - any object/function/class etc which will be operated on in the same way that the `proxy` object was.
+
 -   Returns: Array of `ProxyData` objects, one for each time the path was visited on the proxy object. `null` if it was never visited.
 
 #### ProxyData
