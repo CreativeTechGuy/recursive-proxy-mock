@@ -200,8 +200,16 @@ See the [Proxy Handler functions](https://developer.mozilla.org/en-US/docs/Web/J
 These symbols are used to construct paths for the following functions:
 
 -   `recursiveProxyMock` - the `path` property of the override object
+
 -   `hasPathBeenVisited` - the `path` argument to check if that has ever been visited
+
 -   `getVisitedPathData` - the `path` argument to query path data for all visits to that path
+
+-   There is also a special `ProxySymbol.WILDCARD` which can be used to match 0+ path segments. This is especially useful when mocking a chainable library where the same method can be called with many different paths. So the path for `click()` in `$("div").css("color", "blue").click()` could be expressed as `[ProxySymbol.WILDCARD, "click", ProxySymbol.APPLY]`.
+
+    -   Do not include a wildcard at the end of the path, only the beginning or middle.
+
+-   You can also use the built-in `Symbol.toPrimitive` which can appear as the `prop` of the `GET` proxy handler.
 
 ### `hasPathBeenVisited(proxy, path) => boolean`
 
@@ -234,7 +242,7 @@ A `ProxyData` object contains any relevant details about the operation. For exam
 
 -   `APPLY`, `CONSTRUCT`:
     -   `args` - array of arguments that were passed to the function or constructor
--   `DELETE_PROPERTY`, `GET_OWN_PROPERTY_DESCRIPTOR`, `HAS`, `GET` (default):
+-   `DELETE_PROPERTY`, `GET_OWN_PROPERTY_DESCRIPTOR`, `HAS`, `GET`:
     -   `prop` - the name of the property which was accessed/operated on
 -   `SET`:
     -   `prop` - the name of the property which was accessed/operated on

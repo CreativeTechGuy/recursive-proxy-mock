@@ -232,19 +232,46 @@ Array [
     "name": "get",
     "parent": 0,
     "pathKey": Array [
-      "a",
+      "num",
     ],
-    "prop": "a",
+    "prop": "num",
     "self": 1,
   },
   Object {
     "name": "get",
     "parent": 1,
     "pathKey": Array [
+      "val",
+    ],
+    "prop": "val",
+    "self": 2,
+  },
+  Object {
+    "name": "get",
+    "parent": 2,
+    "pathKey": Array [
+      Symbol(Symbol.toPrimitive),
+    ],
+    "prop": Symbol(Symbol.toPrimitive),
+    "self": 3,
+  },
+  Object {
+    "name": "get",
+    "parent": 0,
+    "pathKey": Array [
+      "a",
+    ],
+    "prop": "a",
+    "self": 4,
+  },
+  Object {
+    "name": "get",
+    "parent": 4,
+    "pathKey": Array [
       "b",
     ],
     "prop": "b",
-    "self": 2,
+    "self": 5,
   },
   Object {
     "name": "get",
@@ -253,24 +280,24 @@ Array [
       "b",
     ],
     "prop": "b",
-    "self": 3,
+    "self": 6,
   },
   Object {
     "name": "get",
-    "parent": 3,
+    "parent": 6,
     "pathKey": Array [
       "a",
     ],
     "prop": "a",
-    "self": 4,
+    "self": 7,
   },
   Object {
     "name": "getPrototypeOf",
-    "parent": 4,
+    "parent": 7,
     "pathKey": Array [
       Symbol(getPrototypeOf),
     ],
-    "self": 5,
+    "self": 8,
   },
 ]
 `;
@@ -738,6 +765,199 @@ Array [
     "prototype": Object {
       "protoValue": "potato",
     },
+  },
+]
+`;
+
+exports[`recursiveProxyMock supports math operations on primitive 1`] = `
+Array [
+  Object {
+    "name": "get",
+    "parent": 0,
+    "pathKey": Array [
+      "test",
+    ],
+    "prop": "test",
+    "self": 1,
+  },
+  Object {
+    "name": "get",
+    "parent": 1,
+    "pathKey": Array [
+      Symbol(Symbol.toPrimitive),
+    ],
+    "prop": Symbol(Symbol.toPrimitive),
+    "self": 2,
+  },
+  Object {
+    "name": "set",
+    "parent": 0,
+    "pathKey": Array [
+      "test",
+      Symbol(set),
+    ],
+    "prop": "test",
+    "value": 0,
+  },
+  Object {
+    "name": "get",
+    "parent": 0,
+    "pathKey": Array [
+      "a",
+    ],
+    "prop": "a",
+    "self": 3,
+  },
+  Object {
+    "name": "get",
+    "parent": 0,
+    "pathKey": Array [
+      "c",
+    ],
+    "prop": "c",
+    "self": 4,
+  },
+  Object {
+    "name": "get",
+    "parent": 4,
+    "pathKey": Array [
+      "d",
+    ],
+    "prop": "d",
+    "self": 5,
+  },
+  Object {
+    "name": "get",
+    "parent": 5,
+    "pathKey": Array [
+      "e",
+    ],
+    "prop": "e",
+    "self": 6,
+  },
+  Object {
+    "name": "get",
+    "parent": 0,
+    "pathKey": Array [
+      "a",
+    ],
+    "prop": "a",
+    "self": 7,
+  },
+  Object {
+    "name": "get",
+    "parent": 7,
+    "pathKey": Array [
+      "b",
+    ],
+    "prop": "b",
+    "self": 8,
+  },
+  Object {
+    "name": "get",
+    "parent": 8,
+    "pathKey": Array [
+      Symbol(Symbol.toPrimitive),
+    ],
+    "prop": Symbol(Symbol.toPrimitive),
+    "self": 9,
+  },
+  Object {
+    "name": "get",
+    "parent": 6,
+    "pathKey": Array [
+      Symbol(Symbol.toPrimitive),
+    ],
+    "prop": Symbol(Symbol.toPrimitive),
+    "self": 10,
+  },
+  Object {
+    "name": "set",
+    "parent": 3,
+    "pathKey": Array [
+      "b",
+      Symbol(set),
+    ],
+    "prop": "b",
+    "value": "0",
+  },
+]
+`;
+
+exports[`recursiveProxyMock supports spread as an array 1`] = `
+Array [
+  Object {
+    "name": "get",
+    "parent": 0,
+    "pathKey": Array [
+      "should",
+    ],
+    "prop": "should",
+    "self": 1,
+  },
+  Object {
+    "name": "get",
+    "parent": 1,
+    "pathKey": Array [
+      "spread",
+    ],
+    "prop": "spread",
+    "self": 2,
+  },
+  Object {
+    "name": "get",
+    "parent": 2,
+    "pathKey": Array [
+      Symbol(Symbol.iterator),
+    ],
+    "prop": Symbol(Symbol.iterator),
+    "self": 3,
+  },
+  Object {
+    "args": Array [],
+    "name": "apply",
+    "parent": 3,
+    "pathKey": Array [
+      Symbol(apply),
+    ],
+    "self": 4,
+  },
+  Object {
+    "name": "get",
+    "parent": 4,
+    "pathKey": Array [
+      "next",
+    ],
+    "prop": "next",
+    "self": 5,
+  },
+  Object {
+    "args": Array [],
+    "name": "apply",
+    "parent": 5,
+    "pathKey": Array [
+      Symbol(apply),
+    ],
+    "self": 6,
+  },
+  Object {
+    "name": "get",
+    "parent": 6,
+    "pathKey": Array [
+      "done",
+    ],
+    "prop": "done",
+    "self": 7,
+  },
+  Object {
+    "name": "set",
+    "parent": 0,
+    "pathKey": Array [
+      "spread",
+      Symbol(set),
+    ],
+    "prop": "spread",
+    "value": Array [],
   },
 ]
 `;

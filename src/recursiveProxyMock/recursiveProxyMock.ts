@@ -100,6 +100,14 @@ function recursiveProxyRecurse(overrides: ProxyOverrideConfig[], stack: ProxySta
                 self: next,
             });
             const override = findOverrideConfig(overrides, [...currentPath, ...pathKey]);
+            if (prop === Symbol.toPrimitive) {
+                return (): number | string => {
+                    if (typeof override !== "undefined") {
+                        return override as number | string;
+                    }
+                    return "";
+                };
+            }
             if (typeof override !== "undefined") {
                 return override;
             }

@@ -54,17 +54,7 @@ describe("recursiveProxyMock", () => {
             const $ = mock;
             $("div").append("<p>Content</p>").css("color", "blue").click();
         }).not.toThrow();
-        expect(
-            hasPathBeenVisited(mock, [
-                ProxySymbol.APPLY,
-                "append",
-                ProxySymbol.APPLY,
-                "css",
-                ProxySymbol.APPLY,
-                "click",
-                ProxySymbol.APPLY,
-            ])
-        ).toStrictEqual(true);
+        expect(hasPathBeenVisited(mock, [ProxySymbol.WILDCARD, "click", ProxySymbol.APPLY])).toStrictEqual(true);
     });
 
     test("example: complex object mock", () => {
@@ -87,6 +77,24 @@ describe("recursiveProxyMock", () => {
             logoutHandler(reqMock, resMock);
         }).not.toThrow();
         expect(hasPathBeenVisited(resMock, ["redirect", ProxySymbol.APPLY])).toStrictEqual(true);
+    });
+
+    test("supports math operations on primitive", () => {
+        const mock = recursiveProxyMock();
+        expect(() => {
+            mock.test *= 10;
+            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+            mock.a.b = mock.c.d.e + (2 * mock.a.b) / 2;
+        }).not.toThrow();
+        expect(listAllProxyOperations(mock)).toMatchSnapshot();
+    });
+
+    test("supports spread as an array", () => {
+        const mock = recursiveProxyMock();
+        expect(() => {
+            mock.spread = [...mock.should.spread];
+        }).not.toThrow();
+        expect(listAllProxyOperations(mock)).toMatchSnapshot();
     });
 
     test("proxy trap: apply", () => {
@@ -171,7 +179,12 @@ describe("recursiveProxyMock", () => {
                 path: ["a", "b"],
                 value: "potato",
             },
+            {
+                path: ["num", "val", Symbol.toPrimitive],
+                value: 10,
+            },
         ]);
+        expect(mock.num.val * 2).toStrictEqual(20);
         expect(mock.a.b).toStrictEqual("potato");
         expect(mock.b.a).not.toBeInstanceOf(String);
         expect(listAllProxyOperations(mock)).toMatchSnapshot();

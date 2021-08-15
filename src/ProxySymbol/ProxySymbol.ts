@@ -17,6 +17,7 @@ export const ProxySymbol = {
     PREVENT_EXTENSIONS: Symbol("preventExtensions"),
     SET: Symbol("set"),
     SET_PROTOTYPE_OF: Symbol("setPrototypeOf"),
+    WILDCARD: Symbol("wildcard"),
 } as const;
 
 export const ProxyStackSymbol = Symbol("proxyStack");
