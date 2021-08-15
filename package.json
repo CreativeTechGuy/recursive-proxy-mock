@@ -46,6 +46,7 @@
         "format": "prettier . --write",
         "format:check": "prettier . --check",
         "spellcheck": "cspell \"**/*.{js,ts,json,md}\"",
+        "sr-dry-run": "semantic-release --dry-run --plugins @semantic-release/commit-analyzer",
         "list-outdated-dependencies": "npm-check-updates --format repo",
         "update-dependencies": "npm-check-updates -u && npm install && npm run release",
         "clean": "rimraf coverage dist node_modules || echo Repo cleaned",
