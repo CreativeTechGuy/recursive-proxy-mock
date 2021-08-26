@@ -10,10 +10,7 @@ describe("hasPathBeenCalledWith", () => {
     test("returns false and console.warn when argument isn't a proxy mock", () => {
         const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation();
         expect(hasPathBeenCalledWith(null, [], [])).toStrictEqual(false);
-        expect(consoleWarnSpy).toHaveBeenCalledWith(
-            "Must pass an object created with `recursiveProxyMock()`. Instead received:",
-            null
-        );
+        expect(consoleWarnSpy).toHaveBeenCalled();
     });
 
     test("returns false and console.warn when path doesn't contain APPLY or CONSTRUCT", () => {

@@ -2,6 +2,7 @@ import { isRecursiveProxyMock } from "~/isRecursiveProxyMock";
 import type { ProxyPath } from "~/proxyTypes";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- used in JSDoc
 import { recursiveProxyMock } from "~/recursiveProxyMock";
+import { NOT_MOCK_WARN_MESSAGE } from "~/utils/constants";
 import { developmentLog } from "~/utils/developmentLog";
 import { doPathsMatch } from "~/utils/doPathsMatch";
 import { listAllPaths } from "~/utils/listAllPaths";
@@ -13,7 +14,7 @@ import { listAllPaths } from "~/utils/listAllPaths";
  */
 export function hasPathBeenVisited(proxy: unknown, path: ProxyPath): boolean {
     if (!isRecursiveProxyMock(proxy)) {
-        developmentLog("Must pass an object created with `recursiveProxyMock()`. Instead received:", proxy);
+        developmentLog(NOT_MOCK_WARN_MESSAGE, proxy);
         return false;
     }
     const allPaths = listAllPaths(proxy);

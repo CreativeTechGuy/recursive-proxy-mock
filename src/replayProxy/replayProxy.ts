@@ -2,9 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { isRecursiveProxyMock } from "~/isRecursiveProxyMock";
-import { developmentLog } from "~/utils/developmentLog";
-import { getProxyStack } from "~/utils/getProxyStack";
 import {
     isApply,
     isConstruct,
@@ -19,7 +16,11 @@ import {
     isPreventExtensions,
     isSet,
     isSetPrototypeOf,
-} from "~/utils/identifyProxyStackItem";
+} from "~/identifyProxyStackItem";
+import { isRecursiveProxyMock } from "~/isRecursiveProxyMock";
+import { NOT_MOCK_WARN_MESSAGE } from "~/utils/constants";
+import { developmentLog } from "~/utils/developmentLog";
+import { getProxyStack } from "~/utils/getProxyStack";
 
 /**
  * @param proxy - the root proxy object returned from {@link recursiveProxyMock}
@@ -27,7 +28,7 @@ import {
  */
 export function replayProxy(proxy: unknown, target: unknown): void {
     if (!isRecursiveProxyMock(proxy)) {
-        developmentLog("Must pass an object created with `recursiveProxyMock()`. Instead received:", proxy);
+        developmentLog(NOT_MOCK_WARN_MESSAGE, proxy);
         return;
     }
     const targetStateMap = new Map<number, any>();

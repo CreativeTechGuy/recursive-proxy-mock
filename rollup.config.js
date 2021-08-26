@@ -3,7 +3,7 @@ import { babel, getBabelOutputPlugin } from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
-import bundleSize from "rollup-plugin-bundle-size";
+import filesize from "rollup-plugin-filesize";
 import ttypescript from "ttypescript";
 
 const typescriptPluginConfig = {
@@ -31,7 +31,7 @@ export default [
             babel({ babelHelpers: "bundled", extensions: [".js", ".ts"] }),
             nodeResolve(),
             commonjs(),
-            bundleSize(),
+            filesize(),
         ],
     },
     {

@@ -21,12 +21,15 @@
     -   [`hasPathBeenCalledWith(proxy, path, args) => boolean`](#haspathbeencalledwithproxy-path-args--boolean)
     -   [`getVisitedPathData(proxy, path) => ProxyData[] | null`](#getvisitedpathdataproxy-path--proxydata--null)
         -   [ProxyData](#proxydata)
+    -   [`resetMock(proxy)`](#resetmockproxy)
     -   [`replayProxy(proxy, target)`](#replayproxyproxy-target)
     -   [`listAllProxyOperations(proxy) => ProxyData[]`](#listallproxyoperationsproxy--proxydata)
+    -   [`listAllProxyPaths(proxy) => ProxyPath[]`](#listallproxypathsproxy--proxypath)
     -   [ProxyPath](#proxypath)
     -   [Caveats](#caveats)
 -   [More examples](#more-examples)
     -   [Mock HTML5 Canvas in JSDOM](#mock-html5-canvas-in-jsdom)
+    -   [Mock a dependency using Jest](#mock-a-dependency-using-jest)
     -   [Mock an entire library](#mock-an-entire-library)
     -   [Mock complex objects](#mock-complex-objects)
 -   [Browser/Node Support](#browsernode-support)
@@ -34,7 +37,7 @@
 
 ## About
 
-Have you ever wanted to mock something that has lots of nested properties and functions? You don't need all of those to be implemented. You just want them to exist so the code doesn't crash. This is the solution.
+This is an easy-to-use library which enables you to instantly mock anything. Any properties, functions, classes, etc will be instantly mocked with one line. Useful when you need to provide a mock, but don't care about the implementation. With this library you can then do many other advanced things such as: overriding certain operations, inspect what operations occurred, replay all operations onto another object, and more!
 
 Recursive Proxy Mock is a [JavaScript Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that can handle literally anything. This is best explained with examples. Read on!
 
@@ -46,9 +49,9 @@ npm install --save-dev recursive-proxy-mock
 
 ```js
 import { recursiveProxyMock } from "recursive-proxy-mock";
-```
 
-```js
+// OR
+
 const { recursiveProxyMock } = require("recursive-proxy-mock");
 ```
 
@@ -253,6 +256,12 @@ A `ProxyData` object contains any relevant details about the operation. For exam
 -   All other handlers:
     -   No useful additional information is available
 
+### `resetMock(proxy)`
+
+Resets the internally tracked proxy operations. See the [Mock a dependency using Jest](#mock-a-dependency-using-jest) example for a common usage of this method.
+
+-   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
+
 ### `replayProxy(proxy, target)`
 
 Replay every operation performed on a proxy mock object onto a target object. This can effectively let you time travel to queue up any actions and replay them as many times as you would like. Every property accessor, every function call, etc will be replayed onto the target.
@@ -268,6 +277,13 @@ This is exposed primarily for debugging or curiosity and shouldn't be relied on.
 
 -   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
 -   Returns: Array of [ProxyData](#proxydata) objects for every operation that was performed on the mock.
+
+### `listAllProxyPaths(proxy) => ProxyPath[]`
+
+A debug function which lists every path and sub-path that was visited on the mock. This is an array of [ProxyPath](#proxypath) arrays which is useful to manually inspect what operations took place and find the correct paths to use for the other APIs.
+
+-   `proxy` - the root proxy object that was returned from `recursiveProxyMock`
+-   Returns: Array of [ProxyPath](#proxypath) arrays with one entry for every path or sub-path that was visited.
 
 ### ProxyPath
 
@@ -291,13 +307,34 @@ Whenever a method accepts a `path` it is an array of properties and symbols to d
 JSDOM doesn't implement the Canvas element so if you are testing code that is drawing on a canvas, it'll crash as soon as it tries to interact with the canvas context. You can use `recursiveProxyMock` to mock every method/property on the context for both 2d and WebGL. None of them will do anything, but the code will no longer crash and you can assert that the required functions were called.
 
 ```ts
-import { recursiveProxyMock } from "recursive-proxy-mock";
+import { recursiveProxyMock, hasPathBeenVisited, ProxySymbol } from "recursive-proxy-mock";
 
-global.HTMLCanvasElement.prototype.getContext = recursiveProxyMock();
+const mock = recursiveProxyMock();
+
+global.HTMLCanvasElement.prototype.getContext = () => mock;
 
 const canvas = document.createElement("canvas");
 const context = canvas.getContext("webgl"); // JSDOM doesn't implement this
 context.clear(context.COLOR_BUFFER_BIT); // This would normally crash
+
+// Check that `context.clear` has been called
+hasPathBeenVisited(mock, ["clear", ProxySymbol.APPLY]);
+```
+
+### Mock a dependency using Jest
+
+```ts
+import { recursiveProxyMock, resetMock } from "recursive-proxy-mock";
+
+const mockInstance = recursiveProxyMock();
+
+beforeEach(() => {
+    resetMock(mockInstance);
+});
+
+jest.doMock("my-dependency", () => {
+    return mockInstance;
+});
 ```
 
 ### Mock an entire library

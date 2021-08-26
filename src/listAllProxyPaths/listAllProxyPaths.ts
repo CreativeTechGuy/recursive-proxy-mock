@@ -1,17 +1,17 @@
 import { isRecursiveProxyMock } from "~/isRecursiveProxyMock";
-import type { ProxyData } from "~/proxyTypes";
+import type { ProxyPath } from "~/proxyTypes";
 import { NOT_MOCK_WARN_MESSAGE } from "~/utils/constants";
 import { developmentLog } from "~/utils/developmentLog";
-import { getProxyStack } from "~/utils/getProxyStack";
+import { listAllPaths } from "~/utils/listAllPaths";
 
 /**
  * @param proxy - the root proxy object returned from {@link recursiveProxyMock}
- * @returns Array of {@link ProxyData} with one entry for every interaction on the proxy object
+ * @returns Array of {@link ProxyPath} arrays with one entry for every path or sub-path that was visited
  */
-export function listAllProxyOperations(proxy: unknown): ProxyData[] {
+export function listAllProxyPaths(proxy: unknown): ProxyPath[] {
     if (!isRecursiveProxyMock(proxy)) {
         developmentLog(NOT_MOCK_WARN_MESSAGE, proxy);
         return [];
     }
-    return getProxyStack(proxy);
+    return listAllPaths(proxy);
 }

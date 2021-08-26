@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { getVisitedPathData as GetVisitedPathDataType } from "./getVisitedPathData";
 import { ProxySymbol } from "~/ProxySymbol";
+import type { SetProxyItem } from "~/proxyTypes";
 import type { recursiveProxyMock as RecursiveProxyMockType } from "~/recursiveProxyMock";
 
 describe("getVisitedPathData", () => {
@@ -66,5 +67,11 @@ describe("getVisitedPathData", () => {
         proxy.a;
         expect(getVisitedPathData(proxy, ["b", "c"])).toBeNull();
         expect(getVisitedPathData(proxy, ["none"])).toBeNull();
+    });
+
+    test("types: generic defines return type", () => {
+        const proxy = recursiveProxyMock();
+        proxy.a = 7;
+        expect(getVisitedPathData<SetProxyItem>(proxy, ["a", ProxySymbol.SET])?.[0].value).toStrictEqual(7);
     });
 });

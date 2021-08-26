@@ -38,14 +38,14 @@ describe("recursiveProxyMock", () => {
                 window: { document },
                 window,
             } = new JSDOM();
-            window.HTMLCanvasElement.prototype.getContext = mock;
+            // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/no-unsafe-return
+            window.HTMLCanvasElement.prototype.getContext = () => mock;
 
             const canvas = document.createElement("canvas");
             const context = canvas.getContext("webgl")!;
             context.clear(context.COLOR_BUFFER_BIT);
         }).not.toThrow();
-        expect(hasPathBeenVisited(mock, [ProxySymbol.APPLY])).toStrictEqual(true);
-        expect(hasPathBeenVisited(mock, [ProxySymbol.APPLY, "clear", ProxySymbol.APPLY])).toStrictEqual(true);
+        expect(hasPathBeenVisited(mock, ["clear", ProxySymbol.APPLY])).toStrictEqual(true);
     });
 
     test("example: jQuery entire library mock", () => {

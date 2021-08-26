@@ -2,6 +2,7 @@ import { getVisitedPathData } from "~/getVisitedPathData";
 import { isRecursiveProxyMock } from "~/isRecursiveProxyMock";
 import { ProxySymbol } from "~/ProxySymbol";
 import type { ProxyCallableItem, ProxyPath } from "~/proxyTypes";
+import { NOT_MOCK_WARN_MESSAGE } from "~/utils/constants";
 import { developmentLog } from "~/utils/developmentLog";
 import { doArraysMatch } from "~/utils/doArraysMatch";
 
@@ -13,14 +14,14 @@ import { doArraysMatch } from "~/utils/doArraysMatch";
  */
 export function hasPathBeenCalledWith(proxy: unknown, path: ProxyPath, args: unknown[]): boolean {
     if (!isRecursiveProxyMock(proxy)) {
-        developmentLog("Must pass an object created with `recursiveProxyMock()`. Instead received:", proxy);
+        developmentLog(NOT_MOCK_WARN_MESSAGE, proxy);
         return false;
     }
     if (![ProxySymbol.APPLY, ProxySymbol.CONSTRUCT].includes(path[path.length - 1] as symbol)) {
         developmentLog("The path must end with `ProxySymbol.APPLY` or `ProxySymbol.CONSTRUCT`");
         return false;
     }
-    const visitedPathData = (getVisitedPathData(proxy, path) ?? []) as ProxyCallableItem[];
+    const visitedPathData = getVisitedPathData<ProxyCallableItem>(proxy, path) ?? [];
     for (const pathData of visitedPathData) {
         if (doArraysMatch(args, pathData.args)) {
             return true;
