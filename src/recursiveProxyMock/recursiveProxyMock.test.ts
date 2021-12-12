@@ -45,7 +45,7 @@ describe("recursiveProxyMock", () => {
             const context = canvas.getContext("webgl")!;
             context.clear(context.COLOR_BUFFER_BIT);
         }).not.toThrow();
-        expect(hasPathBeenVisited(mock, ["clear", ProxySymbol.APPLY])).toStrictEqual(true);
+        expect(hasPathBeenVisited(mock, ["clear", ProxySymbol.APPLY])).toBe(true);
     });
 
     test("example: jQuery entire library mock", () => {
@@ -54,7 +54,7 @@ describe("recursiveProxyMock", () => {
             const $ = mock;
             $("div").append("<p>Content</p>").css("color", "blue").click();
         }).not.toThrow();
-        expect(hasPathBeenVisited(mock, [ProxySymbol.WILDCARD, "click", ProxySymbol.APPLY])).toStrictEqual(true);
+        expect(hasPathBeenVisited(mock, [ProxySymbol.WILDCARD, "click", ProxySymbol.APPLY])).toBe(true);
     });
 
     test("example: complex object mock", () => {
@@ -76,7 +76,7 @@ describe("recursiveProxyMock", () => {
             }
             logoutHandler(reqMock, resMock);
         }).not.toThrow();
-        expect(hasPathBeenVisited(resMock, ["redirect", ProxySymbol.APPLY])).toStrictEqual(true);
+        expect(hasPathBeenVisited(resMock, ["redirect", ProxySymbol.APPLY])).toBe(true);
     });
 
     test("supports math operations on primitive", () => {
@@ -107,7 +107,7 @@ describe("recursiveProxyMock", () => {
                 },
             },
         ]);
-        expect(mock.a.b() * 2).toStrictEqual(14);
+        expect(mock.a.b() * 2).toBe(14);
         expect(fn).toHaveBeenCalled();
         expect(() => {
             mock.c().d();
@@ -130,7 +130,7 @@ describe("recursiveProxyMock", () => {
                 },
             },
         ]);
-        expect(new mock.a.b(2).getValue()).toStrictEqual(14);
+        expect(new mock.a.b(2).getValue()).toBe(14);
         expect(() => {
             new new mock.c().d();
         }).not.toThrow();
@@ -184,8 +184,8 @@ describe("recursiveProxyMock", () => {
                 value: 10,
             },
         ]);
-        expect(mock.num.val * 2).toStrictEqual(20);
-        expect(mock.a.b).toStrictEqual("potato");
+        expect(mock.num.val * 2).toBe(20);
+        expect(mock.a.b).toBe("potato");
         expect(mock.b.a).not.toBeInstanceOf(String);
         expect(listAllProxyOperations(mock)).toMatchSnapshot();
     });
@@ -227,14 +227,14 @@ describe("recursiveProxyMock", () => {
                 value: false,
             },
         ]);
-        expect("b" in mock.a).toStrictEqual(false);
-        expect("c" in mock.a).toStrictEqual(true);
+        expect("b" in mock.a).toBe(false);
+        expect("c" in mock.a).toBe(true);
         expect(listAllProxyOperations(mock)).toMatchSnapshot();
     });
 
     test("proxy trap: isExtensible", () => {
         const mock = recursiveProxyMock();
-        expect(Object.isExtensible(mock.a.b)).toStrictEqual(true);
+        expect(Object.isExtensible(mock.a.b)).toBe(true);
         expect(listAllProxyOperations(mock)).toMatchSnapshot();
     });
 
@@ -249,8 +249,8 @@ describe("recursiveProxyMock", () => {
                 value: null,
             },
         ]);
-        expect(Object.keys(mock.a.b)).toStrictEqual(["po", "ta", "to"]);
-        expect(Object.keys(mock.b.c)).toStrictEqual([]);
+        expect(Object.keys(mock.a.b as Record<string, unknown>)).toStrictEqual(["po", "ta", "to"]);
+        expect(Object.keys(mock.b.c as Record<string, unknown>)).toStrictEqual([]);
         expect(listAllProxyOperations(mock)).toMatchSnapshot();
     });
 

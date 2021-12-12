@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import { ProxyStackSymbol, ProxySymbol } from "~/ProxySymbol";
 import type { ProxyOverrideConfig, ProxyStack, ProxyTarget } from "~/proxyTypes";
 import { findOverrideConfig } from "~/utils/findOverrideConfig";
@@ -25,7 +24,7 @@ function recursiveProxyRecurse(overrides: ProxyOverrideConfig[], stack: ProxySta
     const recursiveProxyInstance = function () {} as ProxyTarget;
     const currentPath = getCurrentPath(stack, parentId);
     return new Proxy(recursiveProxyInstance, {
-        apply: (target, thisArg, argumentsList): unknown => {
+        apply: (target, thisArg, argumentsList: unknown[]): unknown => {
             const next = getNextId();
             const pathKey = [ProxySymbol.APPLY];
             stack.push({
@@ -41,7 +40,7 @@ function recursiveProxyRecurse(overrides: ProxyOverrideConfig[], stack: ProxySta
             }
             return recursiveProxyRecurse(overrides, stack, next);
         },
-        construct: (target, args): InstanceType<ConstructorType> => {
+        construct: (target, args: unknown[]): InstanceType<ConstructorType> => {
             const next = getNextId();
             const pathKey = [ProxySymbol.CONSTRUCT];
             stack.push({

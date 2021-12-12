@@ -91,7 +91,6 @@ export type SetProxyItem = {
 export type SetPrototypeOfProxyItem = {
     name: "setPrototypeOf";
     pathKey: ProxyPath;
-    // eslint-disable-next-line @typescript-eslint/ban-types
     prototype: object | null;
     parent: number;
 };

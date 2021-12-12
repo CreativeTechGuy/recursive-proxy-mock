@@ -72,6 +72,6 @@ describe("getVisitedPathData", () => {
     test("types: generic defines return type", () => {
         const proxy = recursiveProxyMock();
         proxy.a = 7;
-        expect(getVisitedPathData<SetProxyItem>(proxy, ["a", ProxySymbol.SET])?.[0].value).toStrictEqual(7);
+        expect(getVisitedPathData<SetProxyItem>(proxy, ["a", ProxySymbol.SET])?.[0].value).toBe(7);
     });
 });

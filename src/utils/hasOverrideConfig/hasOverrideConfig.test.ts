@@ -17,12 +17,12 @@ const overrideConfig: ProxyOverrideConfig[] = [
 
 describe("hasOverrideConfig", () => {
     test("returns true if any override paths match", () => {
-        expect(hasOverrideConfig(overrideConfig, ["b", "a"])).toStrictEqual(true);
-        expect(hasOverrideConfig(overrideConfig, ["a", "b", ProxySymbol.APPLY])).toStrictEqual(true);
+        expect(hasOverrideConfig(overrideConfig, ["b", "a"])).toBe(true);
+        expect(hasOverrideConfig(overrideConfig, ["a", "b", ProxySymbol.APPLY])).toBe(true);
     });
 
     test("returns false if override paths don't match", () => {
-        expect(hasOverrideConfig(overrideConfig, ["b", "a", "c"])).toStrictEqual(false);
-        expect(hasOverrideConfig(overrideConfig, ["a", "b", ProxySymbol.SET])).toStrictEqual(false);
+        expect(hasOverrideConfig(overrideConfig, ["b", "a", "c"])).toBe(false);
+        expect(hasOverrideConfig(overrideConfig, ["a", "b", ProxySymbol.SET])).toBe(false);
     });
 });
