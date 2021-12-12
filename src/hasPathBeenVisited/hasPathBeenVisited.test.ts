@@ -7,7 +7,7 @@ import { recursiveProxyMock } from "~/recursiveProxyMock";
 describe("hasPathBeenVisited", () => {
     test("returns false and console.warn when argument isn't a proxy mock", () => {
         const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation();
-        expect(hasPathBeenVisited(null, [])).toStrictEqual(false);
+        expect(hasPathBeenVisited(null, [])).toBe(false);
         expect(consoleWarnSpy).toHaveBeenCalled();
     });
 
@@ -15,21 +15,21 @@ describe("hasPathBeenVisited", () => {
         const proxy = recursiveProxyMock();
         proxy.a.b.c;
         proxy.a;
-        expect(hasPathBeenVisited(proxy, ["a", "b"])).toStrictEqual(true);
+        expect(hasPathBeenVisited(proxy, ["a", "b"])).toBe(true);
     });
 
     test("returns false if no paths match", () => {
         const proxy = recursiveProxyMock();
         proxy.a.b.c;
         proxy.a;
-        expect(hasPathBeenVisited(proxy, ["b", "c"])).toStrictEqual(false);
+        expect(hasPathBeenVisited(proxy, ["b", "c"])).toBe(false);
     });
 
     test("returns false when passed a sub-mock object", () => {
         const proxy = recursiveProxyMock();
         const b = proxy.a.b;
         b.c.d;
-        expect(hasPathBeenVisited(b, ["c", "d"])).toStrictEqual(false);
-        expect(hasPathBeenVisited(proxy, ["a", "b", "c", "d"])).toStrictEqual(true);
+        expect(hasPathBeenVisited(b, ["c", "d"])).toBe(false);
+        expect(hasPathBeenVisited(proxy, ["a", "b", "c", "d"])).toBe(true);
     });
 });

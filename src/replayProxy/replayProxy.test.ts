@@ -131,7 +131,7 @@ describe("replayProxy", () => {
                 "name",
                 ProxySymbol.GET_OWN_PROPERTY_DESCRIPTOR,
             ])
-        ).toStrictEqual(true);
+        ).toBe(true);
     });
 
     test("replay: getPrototypeOf", () => {
@@ -139,7 +139,7 @@ describe("replayProxy", () => {
         const proxy = recursiveProxyMock<typeof obj>();
         Object.getPrototypeOf(proxy);
         replayProxy(proxy, obj);
-        expect(hasPathBeenVisited(obj, [ProxySymbol.GET_PROTOTYPE_OF])).toStrictEqual(true);
+        expect(hasPathBeenVisited(obj, [ProxySymbol.GET_PROTOTYPE_OF])).toBe(true);
     });
 
     test("replay: has", () => {
@@ -148,7 +148,7 @@ describe("replayProxy", () => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         "favorite" in proxy;
         replayProxy(proxy, obj);
-        expect(hasPathBeenVisited(obj, ["favorite", ProxySymbol.HAS])).toStrictEqual(true);
+        expect(hasPathBeenVisited(obj, ["favorite", ProxySymbol.HAS])).toBe(true);
     });
 
     test("replay: isExtensible", () => {
@@ -156,7 +156,7 @@ describe("replayProxy", () => {
         const proxy = recursiveProxyMock<typeof obj>();
         Object.isExtensible(proxy);
         replayProxy(proxy, obj);
-        expect(hasPathBeenVisited(obj, [ProxySymbol.IS_EXTENSIBLE])).toStrictEqual(true);
+        expect(hasPathBeenVisited(obj, [ProxySymbol.IS_EXTENSIBLE])).toBe(true);
     });
 
     test("replay: isOwnKeys", () => {
@@ -164,7 +164,7 @@ describe("replayProxy", () => {
         const proxy = recursiveProxyMock<typeof obj>();
         Object.keys(proxy);
         replayProxy(proxy, obj);
-        expect(hasPathBeenVisited(obj, [ProxySymbol.OWN_KEYS])).toStrictEqual(true);
+        expect(hasPathBeenVisited(obj, [ProxySymbol.OWN_KEYS])).toBe(true);
     });
 
     test("replay: preventExtensions", () => {
@@ -176,7 +176,7 @@ describe("replayProxy", () => {
         expect(() => {
             replayProxy(proxy, obj);
         }).toThrow(TypeError);
-        expect(hasPathBeenVisited(obj, [ProxySymbol.PREVENT_EXTENSIONS])).toStrictEqual(true);
+        expect(hasPathBeenVisited(obj, [ProxySymbol.PREVENT_EXTENSIONS])).toBe(true);
     });
 
     test("replay: set", () => {

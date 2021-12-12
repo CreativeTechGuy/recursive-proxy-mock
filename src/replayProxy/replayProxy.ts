@@ -57,7 +57,7 @@ export function replayProxy(proxy: unknown, target: unknown): void {
         } else if (isIsExtensible(stackItem)) {
             Object.isExtensible(parent);
         } else if (isOwnKeys(stackItem)) {
-            Object.keys(parent);
+            Object.keys(parent as Record<string, unknown>);
         } else if (isPreventExtensions(stackItem)) {
             Object.preventExtensions(parent);
         } else if (isSet(stackItem)) {

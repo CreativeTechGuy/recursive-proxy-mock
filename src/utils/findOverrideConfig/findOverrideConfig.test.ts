@@ -23,7 +23,7 @@ const overrideConfig: ProxyOverrideConfig[] = [
 
 describe("findOverrideConfig", () => {
     test("returns value for the first override path that matches", () => {
-        expect(findOverrideConfig(overrideConfig, ["b", "a"])).toStrictEqual("ValueIsPotato");
+        expect(findOverrideConfig(overrideConfig, ["b", "a"])).toBe("ValueIsPotato");
         expect(findOverrideConfig(overrideConfig, ["a", "b", ProxySymbol.APPLY])).toStrictEqual(applyValue);
     });
 
