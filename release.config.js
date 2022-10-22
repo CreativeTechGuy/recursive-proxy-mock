@@ -6,7 +6,8 @@ module.exports = {
         [
             "@semantic-release/github",
             {
-                assets: [{ path: "temp/*.tgz", name: "Bundled NPM Library" }],
+                // eslint-disable-next-line no-template-curly-in-string -- This is a lodash template string
+                assets: [{ path: "temp/*.tgz", name: "recursive-proxy-mock-${nextRelease.gitTag}.tgz" }],
             },
         ],
     ],
