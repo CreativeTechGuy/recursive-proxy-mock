@@ -12,11 +12,11 @@
 
 1. Fork the repository
 1. Install dependencies by running `npm install`
-1. Run `npm run release` to ensure the package builds successfully without any changes
+1. Run `npm run verify && npm run build` to ensure the package builds successfully without any changes
 1. Write the code for your feature/fix
 1. Write tests for the change - ensuring that every code branch is effectively tested
 1. Update the documentation as necessary
-1. Run `npm run release` before committing to ensure the code passes all tests/linters/etc
+1. Run `npm run verify && npm run build` before committing to ensure the code passes all tests/linters/etc
 1. Commit your changes following the [Commit message conventions](#commit-message-conventions) below
 1. Submit a PR for review
 

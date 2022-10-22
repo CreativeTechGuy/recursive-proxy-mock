@@ -1,4 +1,3 @@
-import path from "path";
 import { babel, getBabelOutputPlugin } from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
@@ -9,6 +8,8 @@ import ttypescript from "ttypescript";
 const typescriptPluginConfig = {
     typescript: ttypescript,
     noEmitOnError: true,
+    sourceMap: true,
+    sourceRoot: "..",
     tsconfig: "./tsconfig.json",
     include: ["./src/**"],
     exclude: ["**/*.test.ts"],
@@ -22,12 +23,17 @@ export default [
     {
         input: "./src/index.ts",
         output: {
-            file: "./dist/cjs/index.js",
+            dir: "./dist/cjs",
             format: "cjs",
             sourcemap: true,
+            sourcemapExcludeSources: true,
         },
         plugins: [
-            typescript(typescriptPluginConfig),
+            typescript({
+                ...typescriptPluginConfig,
+                outDir: "./dist/cjs",
+                declarationDir: "./dist/cjs",
+            }),
             babel({ babelHelpers: "bundled", extensions: [".js", ".ts"] }),
             nodeResolve(),
             commonjs(),
@@ -40,6 +46,7 @@ export default [
             dir: "./dist/esm",
             format: "esm",
             sourcemap: true,
+            sourcemapExcludeSources: true,
             preserveModules: true,
         },
         plugins: [
@@ -48,9 +55,7 @@ export default [
                 outDir: "./dist/esm",
                 declarationDir: "./dist/esm",
             }),
-            getBabelOutputPlugin({
-                configFile: path.resolve(__dirname, "babel.config.js"),
-            }),
+            getBabelOutputPlugin(),
             nodeResolve(),
             commonjs(),
         ],

@@ -1,5 +1,5 @@
 {
-    "version": "0.1",
+    "version": "0.2",
     "words": [
         "bundlephobia",
         "chainable",
@@ -9,9 +9,16 @@
         "filesize",
         "iife",
         "lcov",
+        "loglevel",
         "ttypescript",
         "webgl"
     ],
     "ignoreRegExpList": ["\\(#.*\\)"],
-    "ignorePaths": ["/coverage", "/dist", "package-lock.json", "package.json"]
+    "ignorePaths": ["package-lock.json", "package.json"],
+    "useGitignore": true,
+    "validateDirectives": true,
+    "cache": {
+        "useCache": true,
+        "cacheLocation": "./node_modules/.cache/cspell/.cspell"
+    }
 }
