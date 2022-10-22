@@ -1,7 +1,5 @@
 # recursive-proxy-mock
 
-[![npm](https://badgen.net/npm/v/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![license MIT](https://badgen.net/npm/license/recursive-proxy-mock)](https://github.com/CreativeTechGuy/recursive-proxy-mock/blob/main/LICENSE) [![npm type definitions](https://badgen.net/npm/types/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![bundlephobia](https://badgen.net/bundlephobia/minzip/recursive-proxy-mock)](https://bundlephobia.com/package/recursive-proxy-mock) [![npm](https://badgen.net/npm/dm/recursive-proxy-mock)](https://www.npmjs.com/package/recursive-proxy-mock) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-
 > Create a proxy which can mock any object, function, class, etc. with infinite depth and combinations.
 
 ## Table of Contents
@@ -34,6 +32,7 @@
     -   [Mock complex objects](#mock-complex-objects)
 -   [Browser/Node Support](#browsernode-support)
 -   [Performance & Size](#performance--size)
+-   [Updates and Maintenance](#updates-and-maintenance)
 
 ## About
 
@@ -43,9 +42,7 @@ Recursive Proxy Mock is a [JavaScript Proxy](https://developer.mozilla.org/en-US
 
 ## Installation & Importing
 
-```sh
-npm install --save-dev recursive-proxy-mock
-```
+> **NOTE**: This library is not published to NPM as it turns out the use-cases for this are few and far between. If you need it though, builds are available for download via GitHub Releases. You can `npm install` that with a path to the locally downloaded `.tgz` file.
 
 ```js
 import { recursiveProxyMock } from "recursive-proxy-mock";
@@ -380,3 +377,7 @@ Out of the box we support all modern browsers and any currently maintained versi
 ## Performance & Size
 
 It's important to note that Proxies are far slower than most alternatives. We wouldn't recommend to use this for performance-critical code. The library is heavily tree-shakable so the average bundle size will be just a few KBs.
+
+## Updates and Maintenance
+
+This library is "done". Unless there are bugs to fix or important features being requested, I have no plans to keep updating it. It solves a problem (albeit an uncommon one) and if you need it, it should work for you as-is. No need for unnecessary updates. :)

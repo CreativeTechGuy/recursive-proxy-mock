@@ -1,66 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`recursiveProxyMock proxy trap: apply 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
-    "args": Array [],
+  {
+    "args": [],
     "name": "apply",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(apply),
     ],
     "self": 3,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 4,
   },
-  Object {
-    "args": Array [],
+  {
+    "args": [],
     "name": "apply",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(apply),
     ],
     "self": 5,
   },
-  Object {
+  {
     "name": "get",
     "parent": 5,
-    "pathKey": Array [
+    "pathKey": [
       "d",
     ],
     "prop": "d",
     "self": 6,
   },
-  Object {
-    "args": Array [],
+  {
+    "args": [],
     "name": "apply",
     "parent": 6,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(apply),
     ],
     "self": 7,
@@ -69,68 +69,68 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: construct 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
-    "args": Array [
+  {
+    "args": [
       2,
     ],
     "name": "construct",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(construct),
     ],
     "self": 3,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 4,
   },
-  Object {
-    "args": Array [],
+  {
+    "args": [],
     "name": "construct",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(construct),
     ],
     "self": 5,
   },
-  Object {
+  {
     "name": "get",
     "parent": 5,
-    "pathKey": Array [
+    "pathKey": [
       "d",
     ],
     "prop": "d",
     "self": 6,
   },
-  Object {
-    "args": Array [],
+  {
+    "args": [],
     "name": "construct",
     "parent": 6,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(construct),
     ],
     "self": 7,
@@ -139,44 +139,44 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: defineProperty 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
-    "descriptor": Object {
+  {
+    "descriptor": {
       "value": 7,
     },
     "name": "defineProperty",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
       Symbol(defineProperty),
     ],
     "prop": "b",
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 2,
   },
-  Object {
-    "descriptor": Object {
+  {
+    "descriptor": {
       "value": "potato",
     },
     "name": "defineProperty",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "c",
       Symbol(defineProperty),
     ],
@@ -186,38 +186,38 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: deleteProperty 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "deleteProperty",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
       Symbol(deleteProperty),
     ],
     "prop": "b",
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 2,
   },
-  Object {
+  {
     "name": "deleteProperty",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "d",
       Symbol(deleteProperty),
     ],
@@ -227,74 +227,74 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: get 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "num",
     ],
     "prop": "num",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "val",
     ],
     "prop": "val",
     "self": 2,
   },
-  Object {
+  {
     "name": "get",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(Symbol.toPrimitive),
     ],
     "prop": Symbol(Symbol.toPrimitive),
     "self": 3,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 4,
   },
-  Object {
+  {
     "name": "get",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 5,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 6,
   },
-  Object {
+  {
     "name": "get",
     "parent": 6,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 7,
   },
-  Object {
+  {
     "name": "getPrototypeOf",
     "parent": 7,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(getPrototypeOf),
     ],
     "self": 8,
@@ -303,58 +303,58 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: getOwnPropertyDescriptor 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 3,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 3,
-    "pathKey": Array [
+    "pathKey": [
       "c",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "c",
     "self": 4,
   },
-  Object {
+  {
     "name": "get",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       "d",
     ],
     "prop": "d",
     "self": 5,
   },
-  Object {
+  {
     "name": "get",
     "parent": 5,
-    "pathKey": Array [
+    "pathKey": [
       "e",
     ],
     "prop": "e",
@@ -364,29 +364,29 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: getPrototypeOf 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 2,
   },
-  Object {
+  {
     "name": "getPrototypeOf",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(getPrototypeOf),
     ],
     "self": 3,
@@ -395,38 +395,38 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: has 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "has",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
       Symbol(has),
     ],
     "prop": "b",
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 2,
   },
-  Object {
+  {
     "name": "has",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "c",
       Symbol(has),
     ],
@@ -436,29 +436,29 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: isExtensible 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
+  {
     "name": "isExtensible",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(isExtensible),
     ],
   },
@@ -466,141 +466,141 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: ownKeys 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
+  {
     "name": "ownKeys",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(ownKeys),
     ],
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "po",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "po",
     "self": 3,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "ta",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "ta",
     "self": 4,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "to",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "to",
     "self": 5,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "arguments",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "arguments",
     "self": 6,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "caller",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "caller",
     "self": 7,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "prototype",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "prototype",
     "self": 8,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 9,
   },
-  Object {
+  {
     "name": "get",
     "parent": 9,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 10,
   },
-  Object {
+  {
     "name": "ownKeys",
     "parent": 10,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(ownKeys),
     ],
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 10,
-    "pathKey": Array [
+    "pathKey": [
       "arguments",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "arguments",
     "self": 11,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 10,
-    "pathKey": Array [
+    "pathKey": [
       "caller",
       Symbol(getOwnPropertyDescriptor),
     ],
     "prop": "caller",
     "self": 12,
   },
-  Object {
+  {
     "name": "getOwnPropertyDescriptor",
     "parent": 10,
-    "pathKey": Array [
+    "pathKey": [
       "prototype",
       Symbol(getOwnPropertyDescriptor),
     ],
@@ -611,54 +611,54 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: preventExtensions 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
+  {
     "name": "preventExtensions",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(preventExtensions),
     ],
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 3,
   },
-  Object {
+  {
     "name": "get",
     "parent": 3,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 4,
   },
-  Object {
+  {
     "name": "preventExtensions",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(preventExtensions),
     ],
   },
@@ -666,39 +666,39 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: set 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "set",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
       Symbol(set),
     ],
     "prop": "b",
     "value": 7,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
+  {
     "name": "set",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       "c",
       Symbol(set),
     ],
@@ -709,60 +709,60 @@ Array [
 `;
 
 exports[`recursiveProxyMock proxy trap: setPrototypeOf 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 2,
   },
-  Object {
+  {
     "name": "setPrototypeOf",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(setPrototypeOf),
     ],
-    "prototype": Object {
+    "prototype": {
       "protoValue": 7,
     },
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 3,
   },
-  Object {
+  {
     "name": "get",
     "parent": 3,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 4,
   },
-  Object {
+  {
     "name": "setPrototypeOf",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(setPrototypeOf),
     ],
-    "prototype": Object {
+    "prototype": {
       "protoValue": "potato",
     },
   },
@@ -770,111 +770,111 @@ Array [
 `;
 
 exports[`recursiveProxyMock supports math operations on primitive 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "test",
     ],
     "prop": "test",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(Symbol.toPrimitive),
     ],
     "prop": Symbol(Symbol.toPrimitive),
     "self": 2,
   },
-  Object {
+  {
     "name": "set",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "test",
       Symbol(set),
     ],
     "prop": "test",
     "value": 0,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 3,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "c",
     ],
     "prop": "c",
     "self": 4,
   },
-  Object {
+  {
     "name": "get",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       "d",
     ],
     "prop": "d",
     "self": 5,
   },
-  Object {
+  {
     "name": "get",
     "parent": 5,
-    "pathKey": Array [
+    "pathKey": [
       "e",
     ],
     "prop": "e",
     "self": 6,
   },
-  Object {
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "a",
     ],
     "prop": "a",
     "self": 7,
   },
-  Object {
+  {
     "name": "get",
     "parent": 7,
-    "pathKey": Array [
+    "pathKey": [
       "b",
     ],
     "prop": "b",
     "self": 8,
   },
-  Object {
+  {
     "name": "get",
     "parent": 8,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(Symbol.toPrimitive),
     ],
     "prop": Symbol(Symbol.toPrimitive),
     "self": 9,
   },
-  Object {
+  {
     "name": "get",
     "parent": 6,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(Symbol.toPrimitive),
     ],
     "prop": Symbol(Symbol.toPrimitive),
     "self": 10,
   },
-  Object {
+  {
     "name": "set",
     "parent": 3,
-    "pathKey": Array [
+    "pathKey": [
       "b",
       Symbol(set),
     ],
@@ -885,79 +885,79 @@ Array [
 `;
 
 exports[`recursiveProxyMock supports spread as an array 1`] = `
-Array [
-  Object {
+[
+  {
     "name": "get",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "should",
     ],
     "prop": "should",
     "self": 1,
   },
-  Object {
+  {
     "name": "get",
     "parent": 1,
-    "pathKey": Array [
+    "pathKey": [
       "spread",
     ],
     "prop": "spread",
     "self": 2,
   },
-  Object {
+  {
     "name": "get",
     "parent": 2,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(Symbol.iterator),
     ],
     "prop": Symbol(Symbol.iterator),
     "self": 3,
   },
-  Object {
-    "args": Array [],
+  {
+    "args": [],
     "name": "apply",
     "parent": 3,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(apply),
     ],
     "self": 4,
   },
-  Object {
+  {
     "name": "get",
     "parent": 4,
-    "pathKey": Array [
+    "pathKey": [
       "next",
     ],
     "prop": "next",
     "self": 5,
   },
-  Object {
-    "args": Array [],
+  {
+    "args": [],
     "name": "apply",
     "parent": 5,
-    "pathKey": Array [
+    "pathKey": [
       Symbol(apply),
     ],
     "self": 6,
   },
-  Object {
+  {
     "name": "get",
     "parent": 6,
-    "pathKey": Array [
+    "pathKey": [
       "done",
     ],
     "prop": "done",
     "self": 7,
   },
-  Object {
+  {
     "name": "set",
     "parent": 0,
-    "pathKey": Array [
+    "pathKey": [
       "spread",
       Symbol(set),
     ],
     "prop": "spread",
-    "value": Array [],
+    "value": [],
   },
 ]
 `;
